@@ -9,6 +9,7 @@ export default {
       terms: false,
       tempSkill: '',
       skills: [],
+      passwordError: null,
     }
   },
   methods: {
@@ -21,8 +22,18 @@ export default {
       }
     },
     deleteSkill(skill) {
-      this.skills = this.skills.filter(item => skill != item)
-    }
+      this.skills = this.skills.filter((item) => skill != item)
+    },
+    handleSubmit() {
+      this.passwordError = this.password.length > 5 ? '' : '비밀번호는 6자리 이상으로 입력해주세요!'
+      if (!this.passwordError) {
+        console.log('email : ', this.email)
+        console.log('password : ', this.password)
+        console.log('skills : ', this.skills)
+        console.log('terms : ', this.terms)
+        console.log('role : ', this.role)
+      }
+    },
   },
 }
 </script>
@@ -32,7 +43,7 @@ export default {
       <div class="mt-20">
         <h2 class="mt-6 text-center text-3xl font-bold tracking-tighter">회원가입</h2>
       </div>
-      <form>
+      <form class="mt-20 space-y-6" @submit.prevent="handleSubmit">
         <div class="-space-y-px rounded-md shadow-sm">
           <div class="mb-8">
             <label for="email" class="block font-bold text-sm mb-2"> Email : </label>
@@ -61,6 +72,7 @@ export default {
               class="relative block w-full appearance-none rounded-none rounded-t-md outline-none border-b-2 border-gray-300 px-3 py-2 text-gray-900 placehoder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               placeholder="비밀번호 입력"
             />
+            <div v-if="passwordError" class="text-red-500 mt-2 font-xs font-bold"> {{ passwordError }}</div>
           </div>
         </div>
         <div class="-space-y-px rounded-md shadow-sm">
@@ -97,12 +109,16 @@ export default {
             </div>
           </div>
         </div>
+        <div class="flex my-1 mr-3">
+          <input type="checkbox" v-model="terms" required />
+          <label>&nbsp;이용약관에 동의하세요</label>
+        </div>
+        <button
+          class="inline-block bg-indigo-500 font-bold text-sm text-white rounded shadow py-2 px-5 mt-3"
+        >
+          회원가입
+        </button>
       </form>
-      <div class="flex my-1 mr-3">
-        <input type="checkbox" v-model="terms" required/>
-        <label>&nbsp;이용약관에 동의하세요</label>
-      </div>
-      
     </div>
   </div>
 </template>
