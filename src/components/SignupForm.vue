@@ -6,6 +6,7 @@ export default {
       email: '',
       password: '',
       role: '',
+      terms: false,
       tempSkill: '',
       skills: [],
     }
@@ -19,6 +20,9 @@ export default {
         }
       }
     },
+    deleteSkill(skill) {
+      this.skills = this.skills.filter(item => skill != item)
+    }
   },
 }
 </script>
@@ -75,7 +79,7 @@ export default {
         </div>
         <div class="-space-y-px rounded-md shadow-sm">
           <div class="mb-8">
-            <label for="skills" class="block font-bold text-sm mb-2"> Skills : </label>
+            <label for="skills" class="block font-bold text-sm mb-2"> Skills(Enter) : </label>
             <input
               v-model="tempSkill"
               @keyup="addSkill"
@@ -88,16 +92,17 @@ export default {
                 :key="skill"
                 class="mt-3 text-xs font-semibold rounded-full py-1 px-4 mx-1 leading-normal bg-indigo-500 text-white hover:bg-gray-900"
               >
-                <span>{{ skill }}</span>
+                <span @click="deleteSkill(skill)">{{ skill }}</span>
               </div>
             </div>
           </div>
         </div>
       </form>
-      <!-- two-way data binding   -->
-      <p class="mt-20 text-sm text-gray-900">Email : {{ email }}</p>
-      <p class="mt-20 text-sm text-gray-900">Password : {{ password }}</p>
-      <p class="mt-20 text-sm text-gray-900">role : {{ role }}</p>
+      <div class="flex my-1 mr-3">
+        <input type="checkbox" v-model="terms" required/>
+        <label>&nbsp;이용약관에 동의하세요</label>
+      </div>
+      
     </div>
   </div>
 </template>
