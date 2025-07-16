@@ -23,7 +23,7 @@ export default {
         <div
           class="bg-gray-300 hover:bg-purple-400 overflow-hidden w-1/3 mx-auto max-w-lg my-5 shadow sm:rounded-lg"
         >
-        <div class="px-4 py-5 sm:px-6 cursor-pointer">
+          <div class="px-4 py-5 sm:px-6 cursor-pointer">
             <router-link :to="{ name: 'BlogDetails', params: { id: blog.id } }">
               <h2 class="font-bold text-xl text-gray-900 mt-2">{{ blog.title }}</h2>
             </router-link>
