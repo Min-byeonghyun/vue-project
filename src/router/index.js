@@ -19,6 +19,7 @@ const routes = [
     path: '/blogs/:id',
     name: 'BlogDetails',
     component: BlogDetails,
+    props : true,
   },
   {
     path: '/signup',

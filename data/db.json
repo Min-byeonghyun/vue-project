@@ -1,0 +1,7 @@
+{
+  "blogs": [
+    { "title": "1번글", "id": 1, "details": "디테일1" },
+    { "title": "2번글", "id": 2, "details": "디테일2" },
+    { "title": "3번글", "id": 3, "details": "디테일3" }
+  ]
+}
