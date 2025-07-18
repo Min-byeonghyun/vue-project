@@ -16,9 +16,9 @@ export default {
 }
 </script>
 <template>
-  <h1 class="text-3xl font-medium tracking-tight text-white sm:text-4xl">블로그 디테일 페이지</h1>
+  <h1 class="text-3xl font-medium tracking-tight text-white sm:text-4xl">Blog Detail Page</h1>
   <div v-if="blog">
-    <p>블로그 id : {{ blog.title }}</p>
+    <p>{{ blog.title }}</p>
     <p>{{ blog.details }}</p>
   </div>
   <div v-else>...loading</div>
